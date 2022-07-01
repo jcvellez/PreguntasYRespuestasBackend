@@ -2,6 +2,7 @@
 using BackEnd.Domain.Models;
 using BackEnd.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 
 namespace BackEnd.Persistence.Repositories
@@ -17,11 +18,33 @@ namespace BackEnd.Persistence.Repositories
         {
             _context.Add(usuario);
             await _context.SaveChangesAsync();
+
+            //try
+            //{
+            //    var validateExistence = ValidateExistence(usuario);
+            //    if (validateExistence)
+            //    {
+
+            //    }
+            //    _context.Add(usuario);
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
         }
+
+        //public bool ValidateExistence(Usuario usuario)
+        //{
+        //    var validateExistence = _context.Usuario.AnyAsync(x=> x.NombreUsuario == usuario.NombreUsuario);
+        //    bool result = (validateExistence.Result.Equals(true) ? true : false);
+        //    return result;
+        //}
 
         public async Task<bool> ValidateExistence(Usuario usuario)
         {
-            var validateExistence = await _context.Usuario.AnyAsync(x=> x.NombreUsuario == usuario.NombreUsuario);
+            var validateExistence = await _context.Usuario.AnyAsync(x => x.NombreUsuario == usuario.NombreUsuario);
             return validateExistence;
         }
     }

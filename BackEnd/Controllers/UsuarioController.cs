@@ -1,8 +1,10 @@
 ﻿using BackEnd.Domain.IServices;
 using BackEnd.Domain.Models;
+using BackEnd.Utilss;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+
 
 namespace BackEnd.Controllers
 {
@@ -24,15 +26,20 @@ namespace BackEnd.Controllers
                 var validateExistence = await _usuarioServices.ValidateExistence(usuario);
                 if (validateExistence)
                 {
-                    return BadRequest(new { message = "usuario "+usuario.NombreUsuario+" ya existe" });
+                    return BadRequest(new { message = "usuario " + usuario.NombreUsuario + " ya existe" });
                 }
+                //usuario.Password = Encriptar(usuario.Password);
+                usuario.Password = Encriptar.EncriptarPassword(usuario.Password);
                 await _usuarioServices.SaveUser(usuario);
-                return Ok(new{message= "usuario registrado con exito" });
+                return Ok(new { message = "usuario registrado con exito" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);               
+                return BadRequest(ex.Message);
             }
+
+            //var obj= _usuarioServices.SaveUser(usuario);
+            //return Ok(new { message = "usuario registrado con exito" });            
         }
     }
 }
