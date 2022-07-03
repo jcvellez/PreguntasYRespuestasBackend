@@ -3,6 +3,7 @@ using BackEnd.Domain.Models;
 using BackEnd.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BackEnd.Persistence.Repositories
@@ -34,6 +35,7 @@ namespace BackEnd.Persistence.Repositories
 
             //}
         }
+               
 
         //public bool ValidateExistence(Usuario usuario)
         //{
@@ -46,6 +48,18 @@ namespace BackEnd.Persistence.Repositories
         {
             var validateExistence = await _context.Usuario.AnyAsync(x => x.NombreUsuario == usuario.NombreUsuario);
             return validateExistence;
+        }
+
+        public async Task<Usuario> ValidatePassword(int idUsuario, string passwordAnterior)
+        {
+            var usuario = await _context.Usuario.Where(x => x.Id.Equals(idUsuario) && x.Password.Equals(passwordAnterior)).FirstOrDefaultAsync();
+            return usuario;
+        }
+
+        public async Task UpdatePassword(Usuario usuario)
+        {
+            _context.Update(usuario);
+            await _context.SaveChangesAsync();
         }
     }
 }

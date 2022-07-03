@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ProyectoPrueba\\PreguntasYRespuestas\\BackEnd\\BackEnd\\BackEnd.csproj": {}
+    "C:\\ProyectoPrueba\\PreguntasYRespuestas\\Backend\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\ProyectoPrueba\\PreguntasYRespuestas\\BackEnd\\BackEnd\\BackEnd.csproj": {
+    "C:\\ProyectoPrueba\\PreguntasYRespuestas\\Backend\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProyectoPrueba\\PreguntasYRespuestas\\BackEnd\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\ProyectoPrueba\\PreguntasYRespuestas\\Backend\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\ProyectoPrueba\\PreguntasYRespuestas\\BackEnd\\BackEnd\\BackEnd.csproj",
+        "projectPath": "C:\\ProyectoPrueba\\PreguntasYRespuestas\\Backend\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\Juank\\.nuget\\packages\\",
-        "outputPath": "C:\\ProyectoPrueba\\PreguntasYRespuestas\\BackEnd\\BackEnd\\obj\\",
+        "outputPath": "C:\\ProyectoPrueba\\PreguntasYRespuestas\\Backend\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
