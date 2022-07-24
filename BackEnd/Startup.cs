@@ -32,19 +32,21 @@ namespace BackEnd
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conexion")));
-            //Repository
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            services.AddScoped<ILoginRepository, LoginRepository>();
 
             //Service
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<ILoginService, LoginService>();
+            
+            //Repository
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
 
+            //CORS
+            services.AddCors(options => options.AddPolicy("AllowWebApp",
+                                                builder=> builder.AllowAnyOrigin()
+                                                                 .AllowAnyHeader()
+                                                                 .AllowAnyMethod()));
             services.AddControllers();
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BackEnd", Version = "v1" });
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +58,8 @@ namespace BackEnd
                 //app.UseSwagger();
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BackEnd v1"));
             }
+
+            app.UseCors("AllowWebApp");
 
             app.UseRouting();
 
